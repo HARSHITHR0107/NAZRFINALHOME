@@ -45,7 +45,7 @@ export function WhyNazrInTheirWordsSection() {
         </h2>
 
         <p className="font-['Inter',_sans-serif] font-normal text-[#161616] text-[clamp(15px,1.41vw,18px)] leading-[140%] tracking-[-0.03em] mt-0 max-w-[480px] m-0">
-          Real experiences from women who believe safety<br />should be proactive, accessible, and shared.
+          Real experiences from women who believe safety should be proactive,<br />accessible, and shared.
         </p>
 
         <button
