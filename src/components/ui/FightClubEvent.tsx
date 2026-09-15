@@ -116,13 +116,13 @@ export function FightClubEvent() {
                       href="https://form.typeform.com/to/rrrhHrZt"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="w-full md:w-auto px-6 py-3 sm:py-2 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer text-center relative group inline-block"
+                      className="w-full md:w-auto px-6 py-3 sm:py-2 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold tracking-[-0.03em] rounded-[2px] transition-all shadow-md cursor-pointer text-center relative group inline-block"
                     >
                       <span className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-[#FF007A]" />
                       <span className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-[#FF007A]" />
                       <span className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-[#FF007A]" />
                       <span className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-[#FF007A]" />
-                      Book Your Slot Now
+                      BOOK YOUR SLOT NOW
                     </a>
                   </div>
 
@@ -261,37 +261,37 @@ export function FightClubEvent() {
                   </div>
 
                   <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                    <span className="font-[family-name:var(--font-bebas)] text-[#c5b9b3] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#cdc0ba] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
                       WE
                     </span>
                   </div>
                   <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#cdc0ba] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
                       MAKE
                     </span>
                   </div>
                   <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#cdc0ba] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
                       SAFETY
                     </span>
                   </div>
                   <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#cdc0ba] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
                       SIMPLE,
                     </span>
                   </div>
                   <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#cdc0ba] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
                       ACCESSIBLE
                     </span>
                   </div>
                   <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#cdc0ba] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
                       AND
                     </span>
                   </div>
                   <div className="relative z-10 border-b border-[#FF0E97]/40 pb-2">
-                    <span className="font-[family-name:var(--font-bebas)] text-[#78726f] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
+                    <span className="font-[family-name:var(--font-bebas)] text-[#cdc0ba] text-[56px] sm:text-[84px] md:text-[96px] leading-[88%] tracking-tight uppercase block">
                       ACTIONABLE.
                     </span>
                   </div>
@@ -414,7 +414,7 @@ export function FightClubEvent() {
                     href="https://form.typeform.com/to/rrrhHrZt"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-full sm:w-auto px-6 py-3 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer relative group text-center inline-block"
+                    className="w-full sm:w-auto px-6 py-3 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold uppercase tracking-[-0.03em] rounded-[2px] transition-all shadow-md cursor-pointer relative group text-center inline-block"
                   >
                     <span className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-[#FF007A]" />
                     <span className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-[#FF007A]" />
@@ -574,13 +574,13 @@ export function FightClubEvent() {
                   href="https://nazrco.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-full py-3 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-sm font-semibold tracking-wider rounded-[2px] transition-all shadow-md cursor-pointer relative group text-center block"
+                  className="w-full md:w-auto px-6 py-3 sm:py-2 bg-[#FF007A] hover:bg-[#921150] active:scale-[0.98] border border-[#FF1493] text-[#F1E4DE] font-[family-name:var(--font-inter)] text-xs font-semibold tracking-[-0.03em] rounded-[2px] transition-all shadow-md cursor-pointer text-center relative group inline-block"
                 >
                   <span className="absolute -top-1 -left-1 w-2 h-2 border-t border-l border-[#FF007A]" />
                   <span className="absolute -top-1 -right-1 w-2 h-2 border-t border-r border-[#FF007A]" />
                   <span className="absolute -bottom-1 -left-1 w-2 h-2 border-b border-l border-[#FF007A]" />
                   <span className="absolute -bottom-1 -right-1 w-2 h-2 border-b border-r border-[#FF007A]" />
-                  Visit website
+                  VISIT WEBSITE
                 </a>
               </div>
             </div>
@@ -675,9 +675,9 @@ export function FightClubEvent() {
           </footer>
         </div>
 
-      </div>
+      </div >
 
 
-    </div>
+    </div >
   );
 }
