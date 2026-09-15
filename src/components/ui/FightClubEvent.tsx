@@ -83,7 +83,7 @@ export function FightClubEvent() {
                 <div className="relative z-10 space-y-4">
                   {/* Tag 1 */}
                   <div className="relative pb-3 border-b border-[#3E4044]">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
+                    <h3 className="text-center md:text-left font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
                       LIVE MMA ACTION
                     </h3>
                     <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
@@ -92,7 +92,7 @@ export function FightClubEvent() {
 
                   {/* Tag 2 */}
                   <div className="relative pb-3 border-b border-[#3E4044]">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
+                    <h3 className="text-center md:text-left font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
                       REAL COMMUNITY
                     </h3>
                     <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
@@ -101,7 +101,7 @@ export function FightClubEvent() {
 
                   {/* Tag 3 */}
                   <div className="relative pb-3 border-b border-[#3E4044]">
-                    <h3 className="font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
+                    <h3 className="text-center md:text-left font-[family-name:var(--font-bebas)] text-[#F1E4DE] text-[clamp(30px,8.5vw,46px)] md:text-[30px] lg:text-[36px] leading-none tracking-wide uppercase whitespace-nowrap">
                       NEW EXPERIENCES
                     </h3>
                     <span className="absolute -bottom-[6px] right-4 text-[#55585E] text-[10px] select-none">+</span>
@@ -468,8 +468,8 @@ export function FightClubEvent() {
               OUR PARTNERS
             </h2>
 
-            {/* Magenta Blueprint Grid - Centered 2 Partners */}
-            <div className="w-full max-w-[310px] relative border border-[#FF007A]/80 z-10">
+            {/* Magenta Blueprint Grid - Stacked 2 Partners */}
+            <div className="w-full max-w-[260px] sm:max-w-[280px] relative border border-[#FF007A]/80 z-10">
               {/* Technical crosshairs (+) at corners and borders */}
               <span className="absolute -top-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute -top-[7px] left-1/2 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
@@ -482,32 +482,32 @@ export function FightClubEvent() {
               <span className="absolute -bottom-[7px] left-1/2 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute -bottom-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
 
-              {/* Grid 2-column single-row cells */}
-              <div className="grid grid-cols-2 h-[84px] sm:h-[90px]">
-                {/* Cell 1: Pinnora Logo + Events Partner */}
-                <div className="relative border-r border-[#FF007A]/80 flex flex-col items-center justify-center p-2 text-center">
+              {/* Stacked 2-row cells */}
+              <div className="grid grid-cols-1 divide-y divide-[#FF007A]/80">
+                {/* Row 1: Pinnora Logo + Events Partner */}
+                <div className="relative flex flex-col items-center justify-center py-2.5 px-3 text-center">
                   <Image
                     src="/images/Pinnora - Events.svg"
                     alt="Pinnora"
                     width={120}
                     height={32}
-                    className="max-h-6 max-w-[100px] w-auto h-auto object-contain"
+                    className="max-h-5 sm:max-h-6 max-w-[100px] w-auto h-auto object-contain"
                   />
-                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1.5 select-none leading-none">
+                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1 select-none leading-none">
                     Events Partner
                   </span>
                 </div>
 
-                {/* Cell 2: NAZR Fighter Logo + Venue Partner */}
-                <div className="relative flex flex-col items-center justify-center p-2 text-center">
+                {/* Row 2: NAZR Fighter Logo + Venue Partner */}
+                <div className="relative flex flex-col items-center justify-center py-2.5 px-3 text-center">
                   <Image
                     src="/images/fignterlogo.svg"
                     alt="Venue Partner"
-                    width={38}
-                    height={38}
-                    className="max-h-8 max-w-[38px] w-auto h-auto object-contain"
+                    width={34}
+                    height={34}
+                    className="max-h-7 sm:max-h-8 max-w-[34px] w-auto h-auto object-contain"
                   />
-                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1.5 select-none leading-none">
+                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1 select-none leading-none">
                     Venue Partner
                   </span>
                 </div>
