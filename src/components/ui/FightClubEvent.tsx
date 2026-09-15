@@ -7,7 +7,7 @@ import { InteractiveFighter3D } from "./InteractiveFighter3D";
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
     </svg>
   );
 }
@@ -15,7 +15,7 @@ function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
 function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
     <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+      <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
     </svg>
   );
 }
@@ -370,7 +370,7 @@ export function FightClubEvent() {
               <div className="md:col-span-5 relative w-full h-[280px] sm:h-[380px] md:h-[460px] overflow-hidden">
                 <Image
                   src="/images/2ndlastsection.svg"
-                  alt="NAZR Fight Club Event"
+                  alt="NAZR Fight Social Event"
                   fill
                   priority
                   unoptimized
@@ -432,7 +432,7 @@ export function FightClubEvent() {
         {/* Mobile Partners / Custom Section (Mobile only) */}
         <div className="block md:hidden relative w-full drop-shadow-2xl">
           <div
-            className="relative w-full aspect-[370/314] bg-[url('/images/paternes.png')] flex flex-col items-center pt-8 pb-4 px-4 overflow-hidden"
+            className="relative w-full aspect-[370/314] bg-[url('/images/paternes.png')] flex flex-col items-center justify-center pt-8 pb-3 px-4 overflow-hidden"
             style={{
               backgroundSize: "100% 100%",
               backgroundRepeat: "no-repeat",
@@ -462,13 +462,13 @@ export function FightClubEvent() {
 
             {/* Heading: OUR PARTNERS */}
             <h2
-              className="text-[#F1E4DE] text-[44px] sm:text-[48px] tracking-wider uppercase font-bold leading-none mb-3 z-10 select-none"
+              className="text-[#F1E4DE] text-[44px] sm:text-[48px] tracking-wider uppercase font-bold leading-none mb-3.5 z-10 select-none text-center"
               style={{ fontFamily: "var(--font-bebas), 'Bebas Neue', sans-serif" }}
             >
               OUR PARTNERS
             </h2>
 
-            {/* 2x2 Magenta Blueprint Grid */}
+            {/* Magenta Blueprint Grid - Centered 2 Partners */}
             <div className="w-full max-w-[310px] relative border border-[#FF007A]/80 z-10">
               {/* Technical crosshairs (+) at corners and borders */}
               <span className="absolute -top-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
@@ -476,17 +476,16 @@ export function FightClubEvent() {
               <span className="absolute -top-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
 
               <span className="absolute top-1/2 -translate-y-1/2 -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
-              <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute top-1/2 -translate-y-1/2 -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
 
               <span className="absolute -bottom-[7px] -left-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute -bottom-[7px] left-1/2 -translate-x-1/2 text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
               <span className="absolute -bottom-[7px] -right-[4px] text-[#FF007A] text-[10px] font-mono leading-none select-none pointer-events-none">+</span>
 
-              {/* Grid 2x2 cells */}
-              <div className="grid grid-cols-2 grid-rows-2 h-[142px] sm:h-[150px]">
-                {/* Cell 1 (top-left): Pinnora Logo + Events Partner */}
-                <div className="relative border-r border-b border-[#FF007A]/80 flex flex-col items-center justify-center p-2">
+              {/* Grid 2-column single-row cells */}
+              <div className="grid grid-cols-2 h-[84px] sm:h-[90px]">
+                {/* Cell 1: Pinnora Logo + Events Partner */}
+                <div className="relative border-r border-[#FF007A]/80 flex flex-col items-center justify-center p-2 text-center">
                   <Image
                     src="/images/Pinnora - Events.svg"
                     alt="Pinnora"
@@ -499,22 +498,8 @@ export function FightClubEvent() {
                   </span>
                 </div>
 
-                {/* Cell 2 (top-right): bree.svg + Wellness Partner */}
-                <div className="relative border-b border-[#FF007A]/80 flex flex-col items-center justify-center p-2">
-                  <Image
-                    src="/images/bree.svg"
-                    alt="Wellness Partner"
-                    width={110}
-                    height={32}
-                    className="max-h-6 max-w-[100px] w-auto h-auto object-contain"
-                  />
-                  <span className="text-[#F1E4DE] text-[11px] sm:text-[12px] font-normal tracking-wide mt-1.5 select-none leading-none">
-                    Wellness Partner
-                  </span>
-                </div>
-
-                {/* Cell 3 (bottom-left): NAZR Fighter Logo + Venue Partner */}
-                <div className="relative border-r border-[#FF007A]/80 flex flex-col items-center justify-center p-2">
+                {/* Cell 2: NAZR Fighter Logo + Venue Partner */}
+                <div className="relative flex flex-col items-center justify-center p-2 text-center">
                   <Image
                     src="/images/fignterlogo.svg"
                     alt="Venue Partner"
@@ -526,19 +511,14 @@ export function FightClubEvent() {
                     Venue Partner
                   </span>
                 </div>
-
-                {/* Cell 4 (bottom-right): Empty with center crosshair */}
-                <div className="relative flex items-center justify-center p-2">
-                  <span className="text-[#55585E] text-xs font-mono select-none pointer-events-none">+</span>
-                </div>
               </div>
             </div>
           </div>
         </div>
 
         {/* =========================================================================
-            SECTION 4: DEDICATED PAGE FOOTER ("FIGHT CLUB" / NAZR X WCMMA)
-            Figma Frame Silhouette, overlay.png & Giant FIGHT CLUB (W 1192, H 280, #F1E4DE)
+            SECTION 4: DEDICATED PAGE FOOTER ("FIGHT SOCIAL" / NAZR X WCMMA)
+            Figma Frame Silhouette, overlay.png & Giant FIGHT SOCIAL (W 1192, H 280, #F1E4DE)
             ========================================================================= */}
         <div className="relative w-full drop-shadow-2xl">
           <footer
@@ -605,13 +585,13 @@ export function FightClubEvent() {
               </div>
             </div>
 
-            {/* Massive Full-Bleed "FIGHT CLUB" Footer Typography */}
+            {/* Massive Full-Bleed "FIGHT SOCIAL" Footer Typography */}
             <div className="@container relative z-10 w-full flex items-center justify-center overflow-hidden px-1 sm:px-2 pt-6 sm:pt-8 md:py-10 pb-2 md:pb-10">
               <h2
                 className="w-full text-[#F1E4DE] font-[family-name:var(--font-bebas)] leading-[82%] tracking-[-0.01em] uppercase text-center select-none whitespace-nowrap block"
                 style={{ fontSize: "clamp(68px, 23.4cqw, 292px)" }}
               >
-                FIGHT CLUB
+                FIGHT SOCIAL
               </h2>
             </div>
 

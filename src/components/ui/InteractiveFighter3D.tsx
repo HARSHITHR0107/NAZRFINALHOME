@@ -13,18 +13,27 @@ const fighters = [
   {
     id: 2,
     name: "FIGHTER 2",
-    video: "/images/fight-club/fighter-2%20(1).mp4",
+    video: "/images/fight-club/fighter%20vid%202.mp4",
     image: "/images/fight-club/fighter-2-thumb.webp",
   },
 ];
 
 export function InteractiveFighter3D({ className = "" }: { className?: string }) {
   const [activeFighter, setActiveFighter] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const videoRefs = useRef<(HTMLVideoElement | null)[]>([]);
 
-  // Auto-play fighter 1 only after loading screen completes
+  // Preload and initialize
   useEffect(() => {
-    const video = videoRef.current;
+    // Warm up fighter 2 video in background so it's ready instantly
+    const video2 = videoRefs.current[1];
+    if (video2) {
+      video2.load();
+    }
+  }, []);
+
+  // Auto-play active fighter only after loading screen completes
+  useEffect(() => {
+    const video = videoRefs.current[0];
     if (!video) return;
 
     let hasStarted = false;
@@ -73,20 +82,36 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
     };
   }, []);
 
-  const handleFighterSelect = useCallback((index: number) => {
-    if (index === activeFighter) return;
-    setActiveFighter(index);
-    const video = videoRef.current;
-    if (video) {
-      video.src = fighters[index].video;
-      video.currentTime = 0;
-      video.load();
-      const playWhenReady = () => {
-        video.play().catch(() => {});
-      };
-      video.addEventListener("loadeddata", playWhenReady, { once: true });
-    }
-  }, [activeFighter]);
+  const handleFighterSelect = useCallback(
+    (index: number) => {
+      if (index === activeFighter) {
+        // Replay from start if clicking the already active fighter
+        const currentVideo = videoRefs.current[index];
+        if (currentVideo) {
+          currentVideo.currentTime = 0;
+          currentVideo.play().catch(() => {});
+        }
+        return;
+      }
+      const prevIndex = activeFighter;
+      setActiveFighter(index);
+
+      const nextVideo = videoRefs.current[index];
+      if (nextVideo) {
+        nextVideo.currentTime = 0;
+        nextVideo.play().catch(() => {});
+      }
+
+      // Smooth pause on previous video after crossfade completes
+      setTimeout(() => {
+        const prevVideo = videoRefs.current[prevIndex];
+        if (prevVideo) {
+          prevVideo.pause();
+        }
+      }, 550);
+    },
+    [activeFighter]
+  );
 
   return (
     <div
@@ -94,16 +119,26 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
     >
       {/* Main Video Display */}
       <div className="relative flex-1 w-full aspect-[4/5] md:aspect-auto md:h-auto rounded-[10px] overflow-hidden bg-[#24232a]">
-        {/* Video */}
-        <video
-          ref={videoRef}
-          src={fighters[0].video}
-          poster={fighters[activeFighter].image}
-          muted
-          playsInline
-          preload="auto"
-          className="absolute inset-0 w-full h-full object-contain object-center"
-        />
+        {/* Videos with smooth cross-fade transition */}
+        {fighters.map((fighter, index) => {
+          const isActive = activeFighter === index;
+          return (
+            <video
+              key={fighter.id}
+              ref={(el) => {
+                videoRefs.current[index] = el;
+              }}
+              src={fighter.video}
+              poster={fighter.image}
+              muted
+              playsInline
+              preload="auto"
+              className={`absolute inset-0 w-full h-full object-contain object-center transform-gpu transition-opacity duration-500 ease-in-out ${
+                isActive ? "opacity-100 z-[2]" : "opacity-0 z-[1] pointer-events-none"
+              }`}
+            />
+          );
+        })}
 
         {/* Fighter name overlay */}
         <div className="absolute inset-x-0 top-[45%] -translate-y-1/2 z-10 text-center pointer-events-none mix-blend-difference px-2">
@@ -124,8 +159,8 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
             onClick={() => handleFighterSelect(index)}
             className={`relative w-[56px] h-[70px] sm:w-[68px] sm:h-[85px] rounded-[8px] sm:rounded-[10px] overflow-hidden border transition-all duration-300 cursor-pointer group/card bg-[#24232a] ${
               activeFighter === index
-                ? 'border-[#F1E4DE]/60'
-                : 'border-[#3E4044] hover:border-[#55585E]'
+                ? "border-[#F1E4DE]/60"
+                : "border-[#3E4044] hover:border-[#55585E]"
             }`}
           >
             {/* Thumbnail Image */}
@@ -139,9 +174,11 @@ export function InteractiveFighter3D({ className = "" }: { className?: string })
             />
 
             {/* Overlay */}
-            <div className={`absolute inset-0 transition-opacity duration-300 ${
-              activeFighter === index ? 'bg-transparent' : 'bg-black/40 group-hover/card:bg-black/20'
-            }`} />
+            <div
+              className={`absolute inset-0 transition-opacity duration-300 ${
+                activeFighter === index ? "bg-transparent" : "bg-black/40 group-hover/card:bg-black/20"
+              }`}
+            />
           </button>
         ))}
       </div>
