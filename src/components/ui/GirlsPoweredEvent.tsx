@@ -1,8 +1,67 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
+
+function HeroAthlete({ className = "" }: { className?: string }) {
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [cacheKey, setCacheKey] = useState("");
+
+  useEffect(() => {
+    const startPlayback = () => {
+      setCacheKey(`?t=${Date.now()}`);
+      setIsPlaying(true);
+    };
+
+    // If loading screen is already complete (or page was navigated to directly)
+    if (typeof window !== "undefined" && (window as any).__LOADING_COMPLETE__) {
+      startPlayback();
+    } else if (typeof window !== "undefined") {
+      const handleLoadingComplete = () => {
+        startPlayback();
+      };
+      window.addEventListener("loadingComplete", handleLoadingComplete, { once: true });
+
+      // Fallback timer (e.g. if loading screen is not present or completed early)
+      const fallbackTimer = setTimeout(() => {
+        startPlayback();
+      }, 4500);
+
+      return () => {
+        window.removeEventListener("loadingComplete", handleLoadingComplete);
+        clearTimeout(fallbackTimer);
+      };
+    }
+  }, []);
+
+  return (
+    <div className={`relative ${className}`}>
+      {!isPlaying ? (
+        <Image
+          src="/images/hero-athlete-trimmed-first.png"
+          alt="Girls Powered Athlete"
+          width={364}
+          height={1098}
+          priority
+          unoptimized
+          className="w-auto h-full object-contain object-bottom"
+        />
+      ) : (
+        <Image
+          key={cacheKey}
+          src={`/images/hero-athlete-play.webp${cacheKey}`}
+          alt="Girls Powered Athlete"
+          width={364}
+          height={1098}
+          priority
+          unoptimized
+          className="w-auto h-full object-contain object-bottom"
+        />
+      )}
+    </div>
+  );
+}
 // Self-contained SVGs for maximum reliability
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -20,21 +79,7 @@ function LinkedinIcon({ className = "w-4 h-4" }: { className?: string }) {
   );
 }
 
-function FacebookIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-      <path d="M9.101 23.691v-7.98H6.627v-3.667h2.474v-1.58c0-4.085 1.848-5.978 5.858-5.978.401 0 .955.042 1.468.103a8.68 8.68 0 0 1 1.141.195v3.325a8.623 8.623 0 0 0-.653-.036 26.805 26.805 0 0 0-.733-.009c-.704 0-1.282.167-1.621.472-.34.306-.47.854-.47 1.802v1.708h3.813l-.539 3.667h-3.274v7.98H9.1z"/>
-    </svg>
-  );
-}
 
-function TwitterIcon({ className = "w-4 h-4" }: { className?: string }) {
-  return (
-    <svg className={className} fill="currentColor" viewBox="0 0 24 24">
-      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-    </svg>
-  );
-}
 
 function CloseIcon({ className = "w-6 h-6" }: { className?: string }) {
   return (
@@ -101,31 +146,37 @@ export function GirlsPoweredEvent() {
           HERO SECTION
           ========================================================================= */}
       {/* DESKTOP HERO (md and up) */}
-      <section className="hidden md:block relative w-full h-[832px] overflow-hidden bg-[#FA43B7] text-white">
+      <section className="hidden md:block relative w-full h-[832px] overflow-hidden bg-[#161616] text-white">
         {/* Full-fit Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/girls.svg"
-            alt="Girls Powered by NAZR"
+            src="/images/Hero Image.png"
+            alt="Girls Powered by NAZR Background"
             fill
             priority
             className="object-cover object-center"
           />
-          {/* Subtle bottom gradient fade to seamlessly blend into #161616 */}
-          <div className="absolute inset-x-0 bottom-0 h-36 lg:h-44 bg-gradient-to-t from-[#161616] via-[#161616]/70 to-transparent pointer-events-none" />
         </div>
 
-        {/* Content Container overlaid on top of full-fit image */}
+        {/* Hero Character Animated GIF without bg - moved up on desktop */}
+        <div className="absolute inset-x-0 bottom-0 z-0 flex items-end justify-center pointer-events-none">
+          <HeroAthlete className="h-[125%] lg:h-[135%] max-h-[1100px] w-auto -translate-y-6 lg:-translate-y-12" />
+        </div>
+
+        {/* Bottom gradient fade ON TOP of character & background, seamlessly blending into #161616 */}
+        <div className="absolute inset-x-0 -bottom-2 h-60 lg:h-72 bg-gradient-to-t from-[#161616] from-20% via-[#161616]/85 via-50% to-transparent z-[5] pointer-events-none" />
+
+        {/* Content Container overlaid on top of full-fit image & character */}
         <div className="relative z-10 w-full h-full flex flex-col justify-between px-4 md:px-[40px] pt-12 md:pt-[76px] pb-12">
           <div className="w-full h-full flex flex-col justify-between">
             {/* Top Header Group: Tags + Title right against each other */}
             <div className="w-full flex flex-col">
               {/* Top Row: Date and Location tags moved up */}
               <div className="w-full flex justify-between items-center -translate-y-6 md:-translate-y-[44px]">
-                <div className="bg-[#161616] text-[#FFF1EB] px-5 py-2.5 rounded-[2px] font-[family-name:var(--font-mono)] text-xs md:text-sm tracking-wider uppercase shadow-md flex items-center justify-center">
+                <div className="bg-[#161616] text-[#FFF1EB] px-5 py-2.5 font-[family-name:var(--font-mono)] text-xs md:text-sm tracking-wider uppercase shadow-md flex items-center justify-center">
                   27.09.2026
                 </div>
-                <div className="bg-[#161616] text-[#FFF1EB] px-5 py-2.5 rounded-[2px] font-[family-name:var(--font-inter)] text-xs md:text-sm tracking-wide shadow-md flex items-center justify-center">
+                <div className="bg-[#161616] text-[#FFF1EB] px-5 py-2.5 font-[family-name:var(--font-inter)] text-xs md:text-sm tracking-wide shadow-md flex items-center justify-center">
                   Delhi, India
                 </div>
               </div>
@@ -151,7 +202,7 @@ export function GirlsPoweredEvent() {
               <div className="w-auto flex justify-end">
                 <button
                   onClick={() => setIsBookingOpen(true)}
-                  className="h-[48px] px-8 bg-[#161616] text-[#FFF1EB] hover:bg-black hover:scale-105 active:scale-95 font-[family-name:var(--font-inter)] font-semibold text-[15px] flex items-center justify-center rounded-[6px] shadow-2xl tracking-wide uppercase transition-all duration-200 cursor-pointer text-center"
+                  className="h-[48px] px-8 bg-[#161616] text-[#FFF1EB] hover:bg-black hover:scale-105 active:scale-95 font-[family-name:var(--font-inter)] font-semibold text-[15px] flex items-center justify-center shadow-2xl tracking-wide uppercase transition-all duration-200 cursor-pointer text-center"
                 >
                   Book Your Slot Now
                 </button>
@@ -165,19 +216,25 @@ export function GirlsPoweredEvent() {
       </section>
 
       {/* MOBILE HERO (below md) */}
-      <section className="block md:hidden relative w-full h-[812px] overflow-hidden bg-[#FA43B7] text-white">
-        {/* Full-fit Background Image focused on the woman, pinned to bottom */}
+      <section className="block md:hidden relative w-full h-[812px] overflow-hidden bg-[#161616] text-white">
+        {/* Full-fit Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/girls.svg"
-            alt="Girls Powered by NAZR"
+            src="/images/Hero Image.png"
+            alt="Girls Powered by NAZR Background"
             fill
             priority
-            className="object-cover object-bottom"
+            className="object-cover object-center"
           />
-          {/* Bottom fade into #161616 */}
-          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#161616] via-[#161616]/80 to-transparent pointer-events-none" />
         </div>
+
+        {/* Hero Character Animated GIF without bg - moved down */}
+        <div className="absolute inset-x-0 bottom-0 z-0 flex items-end justify-center pointer-events-none">
+          <HeroAthlete className="h-[74%] max-h-[590px] w-auto translate-y-6 sm:translate-y-8" />
+        </div>
+
+        {/* Bottom fade into #161616 ON TOP of character (extended -bottom-2 to seal any subpixel gap) */}
+        <div className="absolute inset-x-0 -bottom-2 h-56 bg-gradient-to-t from-[#161616] from-20% via-[#161616]/90 via-50% to-transparent z-[5] pointer-events-none" />
 
         {/* Content Container overlaid on top */}
         <div className="relative z-10 w-full h-full flex flex-col justify-between px-4 pt-5 pb-6">
@@ -185,10 +242,10 @@ export function GirlsPoweredEvent() {
           <div className="w-full flex flex-col items-center">
             {/* Top Row: Date and Location tags */}
             <div className="w-full flex justify-between items-center">
-              <div className="bg-[#161616] text-[#FFF1EB] px-4 py-2 rounded-[2px] font-[family-name:var(--font-mono)] text-xs tracking-wider uppercase shadow-md">
+              <div className="bg-[#161616] text-[#FFF1EB] px-4 py-2 font-[family-name:var(--font-mono)] text-xs tracking-wider uppercase shadow-md">
                 27.09.2026
               </div>
-              <div className="bg-[#161616] text-[#FFF1EB] px-4 py-2 rounded-[2px] font-[family-name:var(--font-inter)] text-xs tracking-wide shadow-md">
+              <div className="bg-[#161616] text-[#FFF1EB] px-4 py-2 font-[family-name:var(--font-inter)] text-xs tracking-wide shadow-md">
                 Delhi, India
               </div>
             </div>
@@ -209,7 +266,7 @@ export function GirlsPoweredEvent() {
           <div className="w-full flex justify-center mb-14 z-20">
             <button
               onClick={() => setIsBookingOpen(true)}
-              className="w-[82%] max-w-[280px] h-[46px] bg-[#161616] text-[#FFF1EB] hover:bg-black font-[family-name:var(--font-inter)] font-medium text-sm flex items-center justify-center px-4 rounded-[2px] shadow-2xl tracking-normal transition-all duration-200 cursor-pointer text-center"
+              className="w-[82%] max-w-[280px] h-[46px] bg-[#161616] text-[#FFF1EB] hover:bg-black font-[family-name:var(--font-inter)] font-medium text-sm flex items-center justify-center px-4 shadow-2xl tracking-normal transition-all duration-200 cursor-pointer text-center"
             >
               Book Your Slot Now
             </button>
@@ -220,7 +277,7 @@ export function GirlsPoweredEvent() {
       {/* =========================================================================
           EVENT DETAILS SECTION
           ========================================================================= */}
-      <section className="relative w-full bg-[#161616] px-4 md:px-[40px] pt-10 md:pt-24 pb-6 md:pb-8">
+      <section className="relative w-full bg-[#161616] px-4 md:px-[40px] pt-10 md:pt-24 pb-6 md:pb-8 -mt-[1px]">
         <div className="w-full mx-auto flex flex-col items-center">
           {/* Desktop Header */}
           <div className="hidden md:flex flex-col items-center">
@@ -415,9 +472,9 @@ export function GirlsPoweredEvent() {
             </div>
 
             {/* Left Content Column */}
-            <div className="w-full max-w-[358px] md:max-w-none md:w-1/2 mx-auto flex flex-col justify-between text-left">
+            <div className="w-full max-w-[358px] md:max-w-none md:w-1/2 mx-auto flex flex-col justify-between text-center md:text-left">
               <div>
-                <span className="font-[family-name:var(--font-inter)] text-xs md:text-sm text-white uppercase tracking-[0.25em] font-medium">
+                <span className="font-[family-name:var(--font-inter)] text-xs md:text-sm text-white uppercase tracking-[0.25em] font-medium block">
                   DRESS CODE
                 </span>
                 <h2 className="font-[family-name:var(--font-bebas)] text-white text-[40px] md:text-[86px] leading-[100%] md:leading-[90%] tracking-normal md:tracking-[-0.02em] uppercase mt-2 mb-6 md:mb-8">
@@ -426,10 +483,10 @@ export function GirlsPoweredEvent() {
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6 mt-4">
                   <p className="font-[family-name:var(--font-inter)] font-normal text-[16px] text-white leading-[21.9px]">
-                    Wear something you feel<br className="block md:hidden" /> comfortable training in,<br className="block md:hidden" /> activewear, sneakers, whatever<br className="block md:hidden" /> lets you move freely.
+                    Wear something you feel comfortable training in, activewear, sneakers, whatever lets you move freely.
                   </p>
                   <p className="font-[family-name:var(--font-inter)] font-normal text-[16px] text-white leading-[21.9px]">
-                    We&apos;ll bring the gloves, coaches<br className="block md:hidden" /> and energy. You just bring<br className="block md:hidden" /> yourself.
+                    We&apos;ll bring the gloves, coaches and energy. You just bring yourself.
                   </p>
                 </div>
               </div>
@@ -438,7 +495,7 @@ export function GirlsPoweredEvent() {
               <div className="mt-8 md:mt-12 w-full">
                 <button
                   onClick={() => setIsBookingOpen(true)}
-                  className="w-full h-[48px] bg-[#FF0E97] hover:bg-[#E00D86] active:scale-[0.99] text-white font-[family-name:var(--font-bebas)] text-[22px] md:text-[24px] tracking-wide flex items-center justify-center rounded-[6px] uppercase transition-all duration-200 shadow-xl cursor-pointer"
+                  className="w-full h-[48px] bg-[#FF0E97] hover:bg-[#E00D86] active:scale-[0.99] text-white font-[family-name:var(--font-bebas)] text-[22px] md:text-[24px] tracking-wide flex items-center justify-center uppercase transition-all duration-200 shadow-xl cursor-pointer"
                 >
                   BOOK YOUR SLOT NOW
                 </button>
@@ -456,6 +513,51 @@ export function GirlsPoweredEvent() {
             </div>
           </div>
         </div>
+      </section>
+
+      {/* =========================================================================
+          OUR PARTNERS MARQUEE SECTION
+          ========================================================================= */}
+      <section className="relative w-full bg-[#161616] px-4 md:px-[40px] py-10 md:py-16 overflow-hidden">
+        <div className="w-full mx-auto flex flex-col items-center">
+          <h2 className="font-[family-name:var(--font-bebas)] text-white text-[40px] md:text-[72px] leading-[90%] tracking-[-0.02em] uppercase text-center mb-8 md:mb-12">
+            OUR PARTNERS
+          </h2>
+
+          {/* Marquee Container */}
+          <div className="w-full overflow-hidden relative">
+            {/* Scrolling track */}
+            <div className="flex animate-marquee-partners items-center gap-16 md:gap-24 w-max">
+              {/* First set */}
+              <Image src="/images/bree.svg" alt="Bree" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              <Image src="/images/Pinnora - Events.svg" alt="Pinnora Events" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              <Image src="/images/Mask group.svg" alt="Partner" width={160} height={70} className="h-[90px] md:h-[115px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              {/* Duplicate set for seamless loop */}
+              <Image src="/images/bree.svg" alt="Bree" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              <Image src="/images/Pinnora - Events.svg" alt="Pinnora Events" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              <Image src="/images/Mask group.svg" alt="Partner" width={160} height={70} className="h-[90px] md:h-[115px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              {/* Third set for wider screens */}
+              <Image src="/images/bree.svg" alt="Bree" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              <Image src="/images/Pinnora - Events.svg" alt="Pinnora Events" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              <Image src="/images/Mask group.svg" alt="Partner" width={160} height={70} className="h-[90px] md:h-[115px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              {/* Fourth set */}
+              <Image src="/images/bree.svg" alt="Bree" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              <Image src="/images/Pinnora - Events.svg" alt="Pinnora Events" width={160} height={70} className="h-[44px] md:h-[56px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+              <Image src="/images/Mask group.svg" alt="Partner" width={160} height={70} className="h-[90px] md:h-[115px] w-auto object-contain opacity-80 hover:opacity-100 transition-opacity" unoptimized />
+            </div>
+          </div>
+        </div>
+
+        {/* Marquee animation */}
+        <style jsx>{`
+          @keyframes marquee-partners {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+          }
+          .animate-marquee-partners {
+            animation: marquee-partners 20s linear infinite;
+          }
+        `}</style>
       </section>
 
       {/* =========================================================================
@@ -493,24 +595,24 @@ export function GirlsPoweredEvent() {
               <Link href="/terms" className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/80 hover:text-white transition-colors">
                 Accessibility Statement
               </Link>
-              <Link href="/terms" className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/80 hover:text-white transition-colors">
+              <Link href="/girls-powered/terms&condition" className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/80 hover:text-white transition-colors">
                 Terms &amp; Conditions
               </Link>
-              <Link href="/privacy-policy" className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/80 hover:text-white transition-colors">
+              <Link href="/girls-powered/privacy-policy" className="font-[family-name:var(--font-inter)] text-xs text-[#FFF1EB]/80 hover:text-white transition-colors">
                 Privacy Policy
               </Link>
             </div>
 
-            {/* Social Icons: X, Instagram, Facebook */}
+            {/* Social Icons: LinkedIn & Instagram */}
             <div className="flex items-center gap-4">
               <a
-                href="https://x.com/nazr_360"
+                href="https://www.linkedin.com/company/nazrco/"
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="X / Twitter"
+                aria-label="LinkedIn"
                 className="w-10 h-10 md:w-9 md:h-9 rounded-full bg-white text-black hover:bg-[#FF0E97] hover:text-white flex items-center justify-center transition-all duration-200"
               >
-                <TwitterIcon className="w-4 h-4" />
+                <LinkedinIcon className="w-4 h-4" />
               </a>
               <a
                 href="https://www.instagram.com/nazr.360/"
@@ -521,22 +623,13 @@ export function GirlsPoweredEvent() {
               >
                 <InstagramIcon className="w-4 h-4" />
               </a>
-              <a
-                href="https://www.facebook.com/"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="w-10 h-10 md:w-9 md:h-9 rounded-full bg-white text-black hover:bg-[#FF0E97] hover:text-white flex items-center justify-center transition-all duration-200"
-              >
-                <FacebookIcon className="w-4 h-4" />
-              </a>
             </div>
 
             {/* Visit Website Button: Centered on mobile, Right-aligned on desktop */}
             <div className="w-auto">
               <Link
                 href="/"
-                className="inline-block text-center bg-[#FF0E97] hover:bg-[#E00D86] text-black font-[family-name:var(--font-bebas)] text-[20px] md:text-[22px] px-8 py-2.5 rounded-[4px] tracking-wider uppercase transition-colors shadow-md"
+                className="inline-block text-center bg-[#FF0E97] hover:bg-[#E00D86] text-black font-[family-name:var(--font-bebas)] text-[20px] md:text-[22px] px-8 py-2.5 tracking-wider uppercase transition-colors shadow-md"
               >
                 VISIT WEBSITE
               </Link>
@@ -550,7 +643,7 @@ export function GirlsPoweredEvent() {
           ========================================================================= */}
       {isBookingOpen && (
         <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm animate-in fade-in duration-200">
-          <div className="relative w-full max-w-[500px] bg-[#1a1a1a] border border-white/20 rounded-[4px] p-6 md:p-8 text-white shadow-2xl">
+          <div className="relative w-full max-w-[500px] bg-[#1a1a1a] border border-white/20 p-6 md:p-8 text-white shadow-2xl">
             {/* Close Button */}
             <button
               onClick={() => {
@@ -600,7 +693,7 @@ export function GirlsPoweredEvent() {
                       {slots.map((s) => (
                         <label
                           key={s.time}
-                          className={`flex items-center justify-between p-2.5 rounded-[4px] border cursor-pointer transition-all ${
+                          className={`flex items-center justify-between p-2.5 border cursor-pointer transition-all ${
                             selectedSlot === s.time
                               ? "border-[#FF0E97] bg-[#FF0E97]/10 text-white"
                               : "border-white/15 bg-white/5 text-[#FFF1EB]/75 hover:border-white/30"
@@ -632,7 +725,7 @@ export function GirlsPoweredEvent() {
                       placeholder="Your name"
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 rounded-[4px] text-sm text-white placeholder-white/40 outline-none transition-colors"
+                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 text-sm text-white placeholder-white/40 outline-none transition-colors"
                     />
                   </div>
 
@@ -646,7 +739,7 @@ export function GirlsPoweredEvent() {
                       placeholder="you@domain.com"
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 rounded-[4px] text-sm text-white placeholder-white/40 outline-none transition-colors"
+                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 text-sm text-white placeholder-white/40 outline-none transition-colors"
                     />
                   </div>
 
@@ -659,13 +752,13 @@ export function GirlsPoweredEvent() {
                       placeholder="+91 98765 43210"
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
-                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 rounded-[4px] text-sm text-white placeholder-white/40 outline-none transition-colors"
+                      className="w-full bg-[#111111] border border-white/20 focus:border-[#FF0E97] px-3.5 py-2.5 text-sm text-white placeholder-white/40 outline-none transition-colors"
                     />
                   </div>
 
                   <button
                     type="submit"
-                    className="w-full bg-[#FF0E97] hover:bg-[#E00D86] text-white font-[family-name:var(--font-bebas)] text-[24px] py-3 tracking-wider uppercase rounded-[6px] transition-colors cursor-pointer mt-4"
+                    className="w-full bg-[#FF0E97] hover:bg-[#E00D86] text-white font-[family-name:var(--font-bebas)] text-[24px] py-3 tracking-wider uppercase transition-colors cursor-pointer mt-4"
                   >
                     CONFIRM &amp; BOOK SLOT
                   </button>
@@ -689,7 +782,7 @@ export function GirlsPoweredEvent() {
                     setIsBookingOpen(false);
                     setIsSubmitted(false);
                   }}
-                  className="mt-6 bg-white/10 hover:bg-white/20 text-white font-[family-name:var(--font-inter)] text-xs font-semibold px-6 py-2.5 rounded-[4px] uppercase tracking-wider transition-colors cursor-pointer"
+                  className="mt-6 bg-white/10 hover:bg-white/20 text-white font-[family-name:var(--font-inter)] text-xs font-semibold px-6 py-2.5 uppercase tracking-wider transition-colors cursor-pointer"
                 >
                   Done
                 </button>

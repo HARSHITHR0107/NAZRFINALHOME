@@ -111,53 +111,15 @@ export function TrustedCircleSection() {
               <div key={index} className="flex flex-col w-full max-w-[346px] gap-6">
                 {/* Image Block */}
                 <div
-                  className="w-[346px] max-w-full h-[270px] relative flex justify-center items-center p-2 overflow-visible"
+                  className="w-[346px] max-w-full h-[380px] relative flex justify-center items-center p-2 overflow-visible"
                 >
-                  <div className="w-full max-w-[135px] h-full relative flex justify-center items-center overflow-visible">
-                    {/* Top Left Sticker (TL.svg) */}
-                    <div className="absolute -top-[22px] -left-[48px] z-20 pointer-events-none select-none">
-                      <Image
-                        unoptimized
-                        quality={100}
-                        src="/images/TL.svg"
-                        alt="Top Left Sticker"
-                        width={60}
-                        height={57}
-                        className="w-[58px] h-auto object-contain"
-                      />
-                    </div>
-
-                    {/* Top Right Sticker (TR.svg) */}
-                    <div className="absolute -top-[12px] -right-[36px] z-20 pointer-events-none select-none">
-                      <Image
-                        unoptimized
-                        quality={100}
-                        src="/images/TR.svg"
-                        alt="Top Right Sticker"
-                        width={52}
-                        height={47}
-                        className="w-[50px] h-auto object-contain"
-                      />
-                    </div>
-
-                    {/* Down Left Sticker (DL.svg) */}
-                    <div className="absolute top-[47%] -left-[42px] z-20 pointer-events-none select-none">
-                      <Image
-                        unoptimized
-                        quality={100}
-                        src="/images/DL.svg"
-                        alt="Down Left Sticker"
-                        width={48}
-                        height={48}
-                        className="w-[44px] h-auto object-contain"
-                      />
-                    </div>
+                  <div className="w-full h-full relative flex justify-center items-center overflow-visible">
 
                     {animationsData[index] && (
                       <Lottie
                         animationData={animationsData[index]}
                         loop={true}
-                        className="w-full h-full object-contain drop-shadow-2xl"
+                        className="w-[260px] h-full object-contain drop-shadow-2xl"
                       />
                     )}
                   </div>
@@ -196,7 +158,7 @@ export function TrustedCircleSection() {
                 className="relative z-10 flex gap-6 items-start cursor-pointer animate-duration-300"
               >
                 {/* Connecting line to next step */}
-                <div className="absolute left-[19px] top-10 w-[2px] z-0" style={{ bottom: index < 2 ? "-32px" : "-44px" }}>
+                <div className="absolute left-[19px] top-10 w-[2px] z-0" style={{ bottom: index < 2 ? "-32px" : "0px" }}>
                   {/* Track */}
                   <div className="w-full h-full bg-[#161616]/10 rounded-full"></div>
                   {/* Active Fill */}
@@ -257,44 +219,7 @@ export function TrustedCircleSection() {
           >
             {/* Phone & Stickers Container */}
             <div className="w-full max-w-[280px] h-full relative flex justify-center items-center overflow-visible">
-              {/* Top Left Sticker (TL.svg) - Wireframe Globe */}
-              <div className="absolute -top-[42px] -left-[102px] z-20 pointer-events-none select-none">
-                <Image
-                  unoptimized
-                  quality={100}
-                  src="/images/TL.svg"
-                  alt="Top Left Sticker"
-                  width={124}
-                  height={118}
-                  className="w-[110px] md:w-[124px] h-auto object-contain drop-shadow-sm"
-                />
-              </div>
 
-              {/* Top Right Sticker (TR.svg) - Green Binoculars Eyes overlapping top-right phone edge */}
-              <div className="absolute -top-[22px] -right-[74px] z-20 pointer-events-none select-none">
-                <Image
-                  unoptimized
-                  quality={100}
-                  src="/images/TR.svg"
-                  alt="Top Right Sticker"
-                  width={104}
-                  height={94}
-                  className="w-[94px] md:w-[102px] h-auto object-contain drop-shadow-sm"
-                />
-              </div>
-
-              {/* Down Left Sticker (DL.svg) - Blue Badge Stamp */}
-              <div className="absolute top-[47%] -left-[84px] z-20 pointer-events-none select-none">
-                <Image
-                  unoptimized
-                  quality={100}
-                  src="/images/DL.svg"
-                  alt="Down Left Sticker"
-                  width={96}
-                  height={96}
-                  className="w-[84px] md:w-[90px] h-auto object-contain drop-shadow-sm"
-                />
-              </div>
 
               {/* Phone Lottie Visual */}
               <div className="w-full h-full relative flex justify-center items-center z-10 overflow-visible">

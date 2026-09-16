@@ -82,13 +82,13 @@ export function ProductCardsCarousel() {
           {cards.map((card, index) => (
             <div
               key={index}
-              className={`shrink-0 rounded-[16px] overflow-hidden relative group border-[5px] ${card.borderColor}`}
+              className={`shrink-0 rounded-[16px] overflow-hidden relative group border-[2px] ${card.borderColor}`}
               style={{
                 height: "540px",
                 width: "420px",
                 maxWidth: "100%",
                 borderRadius: "16px",
-                borderWidth: "5px",
+                borderWidth: "2px",
               }}
             >
               {/* Gradient SVG Background */}
@@ -185,7 +185,7 @@ export function ProductCardsCarousel() {
             {cards.map((card, index) => (
               <div
                 key={index}
-                className={`shrink-0 w-[320px] min-w-[320px] h-[340px] rounded-[16px] overflow-hidden relative group border-[4px] ${card.borderColor}`}
+                className={`shrink-0 w-[320px] min-w-[320px] h-[340px] rounded-[16px] overflow-hidden relative group border-[2px] ${card.borderColor}`}
                 style={{ opacity: 1, transform: "rotate(0deg)" }}
               >
                 {/* Gradient SVG Background */}

@@ -64,6 +64,7 @@ export function Footer() {
 
   if (
     pathname === "/girls-powered" ||
+    pathname?.startsWith("/girls-powered") ||
     pathname === "/event" ||
     pathname === "/events" ||
     pathname?.startsWith("/fight-club") ||

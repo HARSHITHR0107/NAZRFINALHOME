@@ -184,7 +184,7 @@ function FeatureCard({ feature }: { feature: (typeof features)[0] }) {
         />
 
         {/* Center Phone / Animation Mockup */}
-        <div className="relative z-10 w-[240px] md:w-[280px] h-[320px] md:h-[350px] flex items-center justify-center scale-[1.15] md:scale-[1.2]">
+        <div className="relative z-10 w-[240px] md:w-[280px] h-[320px] md:h-[350px] flex items-center justify-center scale-[1.25] md:scale-[1.2]">
           {animationData ? (
             <Lottie
               animationData={animationData}
@@ -235,16 +235,16 @@ function FeatureCard({ feature }: { feature: (typeof features)[0] }) {
         </h3>
 
         <p
-          className="m-0 text-[#161616]"
           style={{
             fontFamily: "Inter, var(--font-inter), sans-serif",
             fontWeight: 400,
             fontStyle: "normal",
-            fontSize: "16px",
+            fontSize: "14px",
             lineHeight: "150%",
             letterSpacing: "0%",
             color: "#161616",
           }}
+          className="m-0 text-[#161616] md:!text-[16px]"
         >
           {feature.description}
         </p>
