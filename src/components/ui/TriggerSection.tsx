@@ -488,10 +488,10 @@ export function TriggerSection() {
           {/* Mobile Vertical Timeline Line (Animated on Scroll) */}
           <div
             ref={mobileLineRef}
-            className="absolute left-[55px] top-[45px] bottom-[505px] w-[1px] bg-[#161616] z-0 opacity-10"
+            className="absolute left-[55px] top-[45px] bottom-[440px] w-[1px] bg-[#161616] z-0 opacity-10"
           />
           <motion.div
-            className="absolute left-[55px] top-[45px] bottom-[505px] w-[1px] bg-[#FF0E97] z-0 origin-top"
+            className="absolute left-[55px] top-[45px] bottom-[440px] w-[1px] bg-[#FF0E97] z-0 origin-top"
             style={{ scaleY: mobileLineProgress }}
           />
 
@@ -509,7 +509,7 @@ export function TriggerSection() {
             {
               title: "WORKING IN THE BACKGROUND",
               text: "The moment SOS is triggered, your live location is shared while your audio and key details are recorded for faster response.",
-              vid: "/images/vid5.mp4",
+              vid: "/images/Broadcast Fire 2.mp4",
             },
             {
               title: "GUARDIANS ALERTED",
@@ -533,7 +533,7 @@ export function TriggerSection() {
                   : idx === 1
                     ? journeyAnimData
                     : idx === 2
-                      ? broadcastAnimData
+                      ? null
                       : idx === 3
                         ? guardianAnimData
                         : idx === 4
@@ -560,6 +560,12 @@ function MobileTriggerStep({
   lottieAnimationData?: any;
 }) {
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.play().catch(() => {});
+    }
+  }, []);
 
   const circleRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
@@ -636,32 +642,57 @@ function MobileTriggerStep({
         </div>
 
         <div
-          className={`relative w-full ${idx === 2 ? "max-w-[280px] h-[440px] -ml-2" : "max-w-[230px] h-[440px]"
+          className={`relative w-full ${idx === 2 ? "max-w-[280px] h-[340px] -ml-2" : "max-w-[185px] h-[375px]"
             } shrink-0 mt-2 overflow-visible`}
         >
           {lottieAnimationData ? (
             <Lottie
               animationData={lottieAnimationData}
               loop={true}
-              className="w-full h-full object-contain drop-shadow-2xl opacity-100 rotate-0"
+              className={`w-full h-full object-contain ${
+                idx === 2 ? "" : "drop-shadow-2xl"
+              } opacity-100 rotate-0`}
+              style={
+                idx === 2
+                  ? undefined
+                  : {
+                      WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                      WebkitMaskSize: "contain",
+                      WebkitMaskRepeat: "no-repeat",
+                      WebkitMaskPosition: "top center",
+                      maskImage: "url(/images/nazrapp4img.webp)",
+                      maskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      maskPosition: "top center",
+                    }
+              }
             />
           ) : (
             <video
               ref={videoRef}
+              autoPlay
               loop
               muted
               playsInline
-              className="object-contain drop-shadow-2xl object-top w-full h-full"
-              style={{
-                WebkitMaskImage: "url(/images/nazrapp4img.webp)",
-                WebkitMaskSize: "contain",
-                WebkitMaskRepeat: "no-repeat",
-                WebkitMaskPosition: "top center",
-                maskImage: "url(/images/nazrapp4img.webp)",
-                maskSize: "contain",
-                maskRepeat: "no-repeat",
-                maskPosition: "top center",
-              }}
+              className={`object-contain object-top w-full h-full ${
+                idx === 2 ? "mix-blend-multiply" : "drop-shadow-2xl"
+              }`}
+              style={
+                idx === 2
+                  ? {
+                      mixBlendMode: "multiply",
+                    }
+                  : {
+                      WebkitMaskImage: "url(/images/nazrapp4img.webp)",
+                      WebkitMaskSize: "contain",
+                      WebkitMaskRepeat: "no-repeat",
+                      WebkitMaskPosition: "top center",
+                      maskImage: "url(/images/nazrapp4img.webp)",
+                      maskSize: "contain",
+                      maskRepeat: "no-repeat",
+                      maskPosition: "top center",
+                    }
+              }
             >
               <source src={step.vid} type="video/mp4" />
             </video>

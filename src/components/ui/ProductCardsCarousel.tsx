@@ -9,6 +9,7 @@ const cards = [
     bgImage: "/images/PINKGRADPRO.svg",
     image: "/images/my-new-spray.webp",
     borderColor: "border-[#EC008C]",
+    link: "https://shop.nazrco.in/products/on-me-spray",
   },
   {
     id: 2,
@@ -16,6 +17,7 @@ const cards = [
     bgImage: "/images/PURPLEGRADPRO.svg",
     image: "/images/productsip.webp",
     borderColor: "border-[#4338CA]",
+    link: "https://shop.nazrco.in/products/sip-check",
   },
   {
     id: 3,
@@ -23,6 +25,7 @@ const cards = [
     bgImage: "/images/PINKGRADPRO.svg",
     image: "/images/product365.webp",
     borderColor: "border-[#EC008C]",
+    link: "https://shop.nazrco.in/products/bundle",
   }
 ];
 
@@ -115,8 +118,11 @@ export function ProductCardsCarousel() {
                   {renderTitle(card.title)}
                 </h3>
 
-                <button
-                  className="shrink-0 flex items-center justify-center bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[14px] leading-[150%] rounded-[4px] shadow-sm whitespace-nowrap pointer-events-auto cursor-pointer"
+                <a
+                  href={card.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="shrink-0 flex items-center justify-center bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[14px] leading-[150%] rounded-[4px] shadow-sm whitespace-nowrap pointer-events-auto cursor-pointer no-underline text-center"
                   style={{
                     width: "111px",
                     height: "40px",
@@ -124,7 +130,7 @@ export function ProductCardsCarousel() {
                   }}
                 >
                   Shop now
-                </button>
+                </a>
               </div>
 
               {/* Product Image on Pedestal */}
@@ -212,8 +218,11 @@ export function ProductCardsCarousel() {
                     {renderTitle(card.title)}
                   </h3>
 
-                  <button
-                    className="shrink-0 flex items-center justify-center bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[12px] leading-[150%] rounded-[4px] shadow-sm whitespace-nowrap pointer-events-auto cursor-pointer"
+                  <a
+                    href={card.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="shrink-0 flex items-center justify-center bg-[#FFFDF0] hover:bg-[#f5ead0] transition-colors text-[#161616] font-normal text-[12px] leading-[150%] rounded-[4px] shadow-sm whitespace-nowrap pointer-events-auto cursor-pointer no-underline text-center"
                     style={{
                       width: "95px",
                       height: "36px",
@@ -221,7 +230,7 @@ export function ProductCardsCarousel() {
                     }}
                   >
                     Shop now
-                  </button>
+                  </a>
                 </div>
 
                 <Image
