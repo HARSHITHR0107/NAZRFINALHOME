@@ -1,67 +1,8 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-
-function HeroAthlete({ className = "" }: { className?: string }) {
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [cacheKey, setCacheKey] = useState("");
-
-  useEffect(() => {
-    const startPlayback = () => {
-      setCacheKey(`?t=${Date.now()}`);
-      setIsPlaying(true);
-    };
-
-    // If loading screen is already complete (or page was navigated to directly)
-    if (typeof window !== "undefined" && (window as any).__LOADING_COMPLETE__) {
-      startPlayback();
-    } else if (typeof window !== "undefined") {
-      const handleLoadingComplete = () => {
-        startPlayback();
-      };
-      window.addEventListener("loadingComplete", handleLoadingComplete, { once: true });
-
-      // Fallback timer (e.g. if loading screen is not present or completed early)
-      const fallbackTimer = setTimeout(() => {
-        startPlayback();
-      }, 4500);
-
-      return () => {
-        window.removeEventListener("loadingComplete", handleLoadingComplete);
-        clearTimeout(fallbackTimer);
-      };
-    }
-  }, []);
-
-  return (
-    <div className={`relative ${className}`}>
-      {!isPlaying ? (
-        <Image
-          src="/images/hero-athlete-trimmed-first.png"
-          alt="Girls Powered Athlete"
-          width={364}
-          height={1098}
-          priority
-          unoptimized
-          className="w-auto h-full object-contain object-bottom"
-        />
-      ) : (
-        <Image
-          key={cacheKey}
-          src={`/images/hero-athlete-play.webp${cacheKey}`}
-          alt="Girls Powered Athlete"
-          width={364}
-          height={1098}
-          priority
-          unoptimized
-          className="w-auto h-full object-contain object-bottom"
-        />
-      )}
-    </div>
-  );
-}
 // Self-contained SVGs for maximum reliability
 function InstagramIcon({ className = "w-4 h-4" }: { className?: string }) {
   return (
@@ -146,27 +87,21 @@ export function GirlsPoweredEvent() {
           HERO SECTION
           ========================================================================= */}
       {/* DESKTOP HERO (md and up) */}
-      <section className="hidden md:block relative w-full h-[832px] overflow-hidden bg-[#161616] text-white">
+      <section className="hidden md:block relative w-full h-[832px] overflow-hidden bg-[#FA43B7] text-white">
         {/* Full-fit Background Image */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero Image.png"
-            alt="Girls Powered by NAZR Background"
+            src="/images/girls.svg"
+            alt="Girls Powered by NAZR"
             fill
             priority
             className="object-cover object-center"
           />
+          {/* Subtle bottom gradient fade to seamlessly blend into #161616 */}
+          <div className="absolute inset-x-0 bottom-0 h-36 lg:h-44 bg-gradient-to-t from-[#161616] via-[#161616]/70 to-transparent pointer-events-none" />
         </div>
 
-        {/* Hero Character Animated GIF without bg - moved up on desktop */}
-        <div className="absolute inset-x-0 bottom-0 z-0 flex items-end justify-center pointer-events-none">
-          <HeroAthlete className="h-[125%] lg:h-[135%] max-h-[1100px] w-auto -translate-y-6 lg:-translate-y-12" />
-        </div>
-
-        {/* Bottom gradient fade ON TOP of character & background, seamlessly blending into #161616 */}
-        <div className="absolute inset-x-0 -bottom-2 h-60 lg:h-72 bg-gradient-to-t from-[#161616] from-20% via-[#161616]/85 via-50% to-transparent z-[5] pointer-events-none" />
-
-        {/* Content Container overlaid on top of full-fit image & character */}
+        {/* Content Container overlaid on top of full-fit image */}
         <div className="relative z-10 w-full h-full flex flex-col justify-between px-4 md:px-[40px] pt-12 md:pt-[76px] pb-12">
           <div className="w-full h-full flex flex-col justify-between">
             {/* Top Header Group: Tags + Title right against each other */}
@@ -216,25 +151,19 @@ export function GirlsPoweredEvent() {
       </section>
 
       {/* MOBILE HERO (below md) */}
-      <section className="block md:hidden relative w-full h-[812px] overflow-hidden bg-[#161616] text-white">
-        {/* Full-fit Background Image */}
+      <section className="block md:hidden relative w-full h-[812px] overflow-hidden bg-[#FA43B7] text-white">
+        {/* Full-fit Background Image focused on the woman, pinned to bottom */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/Hero Image.png"
-            alt="Girls Powered by NAZR Background"
+            src="/images/girls.svg"
+            alt="Girls Powered by NAZR"
             fill
             priority
-            className="object-cover object-center"
+            className="object-cover object-bottom"
           />
+          {/* Bottom fade into #161616 */}
+          <div className="absolute inset-x-0 bottom-0 h-36 bg-gradient-to-t from-[#161616] via-[#161616]/80 to-transparent pointer-events-none" />
         </div>
-
-        {/* Hero Character Animated GIF without bg - moved down */}
-        <div className="absolute inset-x-0 bottom-0 z-0 flex items-end justify-center pointer-events-none">
-          <HeroAthlete className="h-[74%] max-h-[590px] w-auto translate-y-6 sm:translate-y-8" />
-        </div>
-
-        {/* Bottom fade into #161616 ON TOP of character (extended -bottom-2 to seal any subpixel gap) */}
-        <div className="absolute inset-x-0 -bottom-2 h-56 bg-gradient-to-t from-[#161616] from-20% via-[#161616]/90 via-50% to-transparent z-[5] pointer-events-none" />
 
         {/* Content Container overlaid on top */}
         <div className="relative z-10 w-full h-full flex flex-col justify-between px-4 pt-5 pb-6">
@@ -277,7 +206,7 @@ export function GirlsPoweredEvent() {
       {/* =========================================================================
           EVENT DETAILS SECTION
           ========================================================================= */}
-      <section className="relative w-full bg-[#161616] px-4 md:px-[40px] pt-10 md:pt-24 pb-6 md:pb-8 -mt-[1px]">
+      <section className="relative w-full bg-[#161616] px-4 md:px-[40px] pt-10 md:pt-24 pb-6 md:pb-8">
         <div className="w-full mx-auto flex flex-col items-center">
           {/* Desktop Header */}
           <div className="hidden md:flex flex-col items-center">
